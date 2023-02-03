@@ -21,12 +21,12 @@ public class IDateSorterImpl implements IDateSorter {
      */
     @Override
     public Collection<LocalDate> sortDates(List<LocalDate> unsortedDates) {
-        List<LocalDate> listOfDates = new ArrayList<>();
+        List<LocalDate> sortedDates = new ArrayList<>();
 
         unsortedDates.stream().filter(localDate -> localDate.getMonth().toString().toLowerCase().contains("r")).
-                sorted().forEachOrdered(listOfDates::add);
+                sorted().forEachOrdered(sortedDates::add);
         unsortedDates.stream().filter(localDate -> !localDate.getMonth().toString().toLowerCase().contains("r")).
-                sorted(Comparator.reverseOrder()).forEachOrdered(listOfDates::add);
-        return listOfDates;
+                sorted(Comparator.reverseOrder()).forEachOrdered(sortedDates::add);
+        return sortedDates;
     }
 }
